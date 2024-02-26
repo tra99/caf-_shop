@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     url: jdbc:mysql://localhost:3306/coffeeShop
-    password: 12345
+    password:
 
   jpa:
     hibernate:
@@ -16,7 +16,3 @@ server:
   port: 7000
   error:
     include-message: always
-
-
-
-

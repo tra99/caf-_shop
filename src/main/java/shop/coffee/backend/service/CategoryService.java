@@ -1,9 +1,13 @@
 package shop.coffee.backend.service;
 
 import java.util.*;
+
+import org.springframework.stereotype.Service;
+
 import shop.coffee.backend.entity.Category;
 import shop.coffee.backend.repository.CategoryRepository;
 
+@Service
 public class CategoryService {
     private final CategoryRepository categoryRepository;
 
