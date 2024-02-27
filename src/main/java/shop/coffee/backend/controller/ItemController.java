@@ -1,61 +1,69 @@
 package shop.coffee.backend.controller;
 
-import java.util.*;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import shop.coffee.backend.entity.Item;
 import shop.coffee.backend.service.ItemService;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/item")
 public class ItemController {
-    
     private final ItemService itemService;
 
-    public ItemController(ItemService itemService){
-        this.itemService=itemService;
+    public ItemController(ItemService itemService) {
+        this.itemService = itemService;
     }
 
-    @GetMapping("/getAllItem")
-    public ResponseEntity<List<Item>> getAllItems(){
-        List<Item> items=itemService.getAllItems();
-        return new ResponseEntity<>(items,HttpStatus.OK);
+    @GetMapping("/getAll")
+    public ResponseEntity<List<Item>> getAllItems() {
+        List<Item> items = itemService.getAllItems();
+        return new ResponseEntity<>(items, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Item> getItemById(@PathVariable long id){
-        Optional<Item> item=itemService.getProductById(id);
-        return item.map(value -> new ResponseEntity<>(value,HttpStatus.OK)).orElseGet(()-> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    public ResponseEntity<Item> getItemById(@PathVariable long id) {
+        Optional<Item> item = itemService.getItemById(id);
+        return item.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/addItem")
-    public ResponseEntity<Item> createItem(@RequestBody Item item){
-        Item createdItem=itemService.createOrUpdateItem(item);
-        return new ResponseEntity<>(createdItem,HttpStatus.CREATED);
+    @PostMapping("/add")
+    public ResponseEntity<Item> createItem(@RequestBody Item item) {
+        Item createdItem = itemService.createOrUpdateItem(item);
+        return new ResponseEntity<>(createdItem, HttpStatus.OK);
     }
 
-    @PutMapping("/updateItem")
-    public ResponseEntity<Item> updateItem(@PathVariable long id, @RequestBody Item updatedItem){
-        Optional<Item> existingItemOptional=itemService.getProductById(id);
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Item> updateItem(@PathVariable long id, @RequestBody Item updateItem) {
+        Optional<Item> existingItemOptional = itemService.getItemById(id);
 
-        if(existingItemOptional.isPresent()){
-            Item existingItem=existingItemOptional.get();
-            existingItem.setItemName(updatedItem.getItemName());
+        if (existingItemOptional.isPresent()) {
+            Item existingItem = existingItemOptional.get();
+            existingItem.setItemName(updateItem.getItemName());
+            existingItem.setCategory(updateItem.getCategory());
 
-            Item saveItem=itemService.createOrUpdateItem(existingItem);
-            return new ResponseEntity<>(saveItem,HttpStatus.OK);
-        }
-        else{
+            Item savedItem = itemService.createOrUpdateItem(existingItem);
+            return new ResponseEntity<>(savedItem, HttpStatus.OK);
+        } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteItemById(@PathVariable long id) {
+        Optional<Item> item = itemService.getItemById(id);
+
+        if (item.isPresent()) {
+            itemService.deleteItemById(id);
+            String message = "Item with ID " + id + " is deleted";
+            return new ResponseEntity<>(message, HttpStatus.NO_CONTENT);
+        } else {
+            String message = "Item with ID " + id + " is not found";
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
     }
 }

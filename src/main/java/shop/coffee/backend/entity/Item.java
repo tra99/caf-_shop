@@ -1,48 +1,46 @@
 package shop.coffee.backend.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    public long getId() {
+    private String itemName;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
+
+    public Long getId() {
         return id;
     }
-    public void setId(long id) {
+
+    public void setId(Long id) {
         this.id = id;
     }
-    private String itemName;
-    private long itemCategory;
-    private String itemSize;
-    private float price;
+
     public String getItemName() {
         return itemName;
     }
+
     public void setItemName(String itemName) {
         this.itemName = itemName;
     }
-    public Long getItemCategory() {
-        return itemCategory;
+
+    public Category getCategory() {
+        return category;
     }
-    public void setItemCategory(Long itemCategory) {
-        this.itemCategory = itemCategory;
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
-    public String getItemSize() {
-        return itemSize;
-    }
-    public void setItemSize(String itemSize) {
-        this.itemSize = itemSize;
-    }
-    public float getPrice() {
-        return price;
-    }
-    public void setPrice(float price) {
-        this.price = price;
-    }   
 }
