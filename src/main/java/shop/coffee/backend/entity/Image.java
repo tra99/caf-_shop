@@ -32,7 +32,6 @@ public class Image {
         this.type = type;
         this.imageData = imageData;
         this.item = item;
-        this.name=name;
     }
 
     public long getImageId() {

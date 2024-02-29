@@ -1,9 +1,13 @@
 package shop.coffee.backend.entity;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class MyUser {
@@ -65,4 +69,9 @@ public class MyUser {
     public enum PaymentMethod {
     ABA, Wing, Aclida
     }
+
+    @OneToMany(mappedBy = "myuser", cascade = CascadeType.ALL)
+    private List<Address> address;
+
+    
 }
