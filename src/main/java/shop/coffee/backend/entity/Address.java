@@ -1,11 +1,14 @@
 package shop.coffee.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Address {
@@ -17,9 +20,10 @@ public class Address {
     private String state;
     private String postalCode;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private MyUser myUser;
+    // @ManyToOne
+    // @JoinColumn(name = "user_id")
+    // @JsonBackReference
+    // private MyUser myUser;
 
     public long getAddressId() {
         return addressId;
@@ -61,12 +65,17 @@ public class Address {
         this.postalCode = postalCode;
     }
 
-    public MyUser getMyUser() {
-        return myUser;
-    }
+    // public MyUser getMyUser() {
+    //     return myUser;
+    // }
 
-    public void setMyUser(MyUser myUser) {
-        this.myUser = myUser;
-    }
+    // public void setMyUser(MyUser myUser) {
+    //     this.myUser = myUser;
+    // }
+
+    // @OneToOne
+    // @JoinColumn(name = "order_id")
+    // @JsonBackReference
+    // private Order order;
 }
 

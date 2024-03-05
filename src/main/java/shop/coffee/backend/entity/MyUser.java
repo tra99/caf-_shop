@@ -70,8 +70,26 @@ public class MyUser {
     ABA, Wing, Aclida
     }
 
-    @OneToMany(mappedBy = "myuser", cascade = CascadeType.ALL)
-    private List<Address> address;
+    // @OneToMany(mappedBy = "myUser", cascade = CascadeType.ALL)
+    // private List<Address> address;
 
-    
+    // public List<Address> getAddress() {
+    //     return address;
+    // }
+
+    // public void setAddress(List<Address> address) {
+    //     this.address = address;
+    // }
+
+    // @OneToMany(mappedBy = "myUser", cascade = CascadeType.ALL)
+    // private List<Order> orders;
+
+    // public List<Order> getOrders() {
+    //     return orders;
+    // }
+
+    // public void setOrders(List<Order> orders) {
+    //     this.orders = orders;
+    // }
+
 }
