@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:frontend/authentication/register.dart';
+import 'package:frontend/authentication/login.dart';
 import 'package:frontend/utils/font_color.dart';
 import 'package:frontend/views/home_page.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController _controller = TextEditingController();
 
   @override
@@ -25,11 +25,9 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           children: [
             const SizedBox(
-              height: 70,
+              height: 60,
             ),
             Image.asset("assets/images/add.png", width: 200),
-            const SizedBox(height: 20),
-            // const Text("Travell's Coffee"),
             const SizedBox(height: 20),
             const Align(
               alignment: Alignment.centerLeft,
@@ -42,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(height: 6),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Container(
+              child: SizedBox(
                 height: 50,
                 child: TextField(
                   controller: _controller,
@@ -62,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 18,
             ),
             const Align(
@@ -78,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(height: 6),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Container(
+              child: SizedBox(
                 height: 50,
                 child: TextField(
                   controller: _controller,
@@ -98,77 +96,100 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 10,
+            const SizedBox(
+              height: 18,
             ),
             const Align(
-              alignment: Alignment.centerRight,
+              alignment: Alignment.centerLeft,
               child: Padding(
-                padding: EdgeInsets.only(right: 20.0),
+                padding: EdgeInsets.only(left: 20.0),
                 child: Text(
-                  "Forgot your password?",
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 106, 85, 77),
-                    fontWeight: FontWeight.bold,
-                    decoration: TextDecoration.underline,
+                  "Confirm your password",
+                  style: AppTextStyles.mainColor,
+                ),
+              ),
+            ),
+            const SizedBox(height: 6),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: SizedBox(
+                height: 50,
+                child: TextField(
+                  controller: _controller,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderSide:
+                          BorderSide(color: Color.fromARGB(255, 83, 62, 54)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderSide: BorderSide(
+                          color: Color.fromARGB(255, 83, 62,
+                              54)), // Set the same color for focused border
+                    ),
                   ),
                 ),
               ),
             ),
+            const SizedBox(
+              height: 10,
+            ),
+    
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                      MaterialPageRoute(builder: (context) => const HomeScreen()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Color.fromARGB(255, 106, 85, 77), // Background color
+                    primary: const Color.fromARGB(255, 106, 85, 77), // Background color
                     onPrimary: Colors.white,
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12), // Button padding
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12), // Button padding
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8), // Button border radius
                     ),
                   ),
-                  child: Text(
-                    'Login',
+                  child: const Text(
+                    'Register',
                     style: TextStyle(fontSize: 16),
                   ),
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Text("Don't have account yet?",style: AppTextStyles.mainColorBold,),
-            SizedBox(height: 10,),
+            const Text("Already have an account?",style: AppTextStyles.mainColorBold,),
+            const SizedBox(height: 10,),
             Padding(
               padding: const EdgeInsets.only(left: 20,right: 20,),
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => RegisterScreen()),
+                      MaterialPageRoute(builder: (context) => const LoginScreen()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Color.fromARGB(255, 244, 225, 219), // Background color
-                    onPrimary: Color.fromARGB(255, 106, 85, 77),
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12), // Button padding
+                    primary: const Color.fromARGB(255, 244, 225, 219), // Background color
+                    onPrimary: const Color.fromARGB(255, 106, 85, 77),
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12), // Button padding
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8), // Button border radius
                     ),
                   ),
-                  child: Text(
-                    'Register',
+                  child: const Text(
+                    'Login',
                     style: TextStyle(fontSize: 16),
                   ),
                 ),
