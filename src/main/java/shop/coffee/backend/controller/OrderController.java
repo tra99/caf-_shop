@@ -48,8 +48,8 @@
 //         if(existingOrderOptional.isPresent()){
 //             Order existingOrder=existingOrderOptional.get();
 //             existingOrder.setQty(updatedOrder.getQty());
-//             existingOrder.setDeliverOption(updatedOrder.getDeliverOption());
-//             existingOrder.setItem(updatedOrder.getItem());
+//             existingOrder.setDeliveryOption(updatedOrder.getDeliveryOption());
+//             // existingOrder.setItem(updatedOrder.getItem());
 
 //             Order savedOrder=orderService.createOrUpdateOrder(existingOrder);
 //             return new ResponseEntity<>(savedOrder,HttpStatus.OK);

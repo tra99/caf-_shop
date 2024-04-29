@@ -15,23 +15,22 @@ public class MyUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String username;
+    private String password;
+    private String email;
+    private PaymentMethod paymentMethod;
+
+    // @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    // private List<Order> orders;
+
+    // constructors, getters, setters
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    private String username;
-    private String password;
-    private String email;
-    private PaymentMethod paymentMethod;
-
-    public MyUser(String username, String password, String email) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
     }
 
     public String getUsername() {
@@ -58,17 +57,29 @@ public class MyUser {
         this.email = email;
     }
 
-    public MyUser() {}
-
     public PaymentMethod getPaymentMethod() {
         return paymentMethod;
     }
+
     public void setPaymentMethod(PaymentMethod paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
+
+    // public List<Order> getOrders() {
+    //     return orders;
+    // }
+
+    // public void setOrders(List<Order> orders) {
+    //     this.orders = orders;
+    // }
+
     public enum PaymentMethod {
-    ABA, Wing, Aclida
+        ABA, Wing, Aclida
     }
+}
+
+
+
 
     // @OneToMany(mappedBy = "myUser", cascade = CascadeType.ALL)
     // private List<Address> address;
@@ -91,5 +102,3 @@ public class MyUser {
     // public void setOrders(List<Order> orders) {
     //     this.orders = orders;
     // }
-
-}

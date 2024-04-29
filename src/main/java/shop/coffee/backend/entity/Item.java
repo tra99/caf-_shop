@@ -43,9 +43,9 @@ public class Item {
     public void setCategory(Category category) {
         this.category = category;
     }
+}
 
     // @ManyToOne
     // @JoinColumn(name = "order_id")
     // @JsonBackReference
     // private Order order;
-}

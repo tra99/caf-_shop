@@ -1,78 +1,82 @@
 // package shop.coffee.backend.entity;
 
-// import com.fasterxml.jackson.annotation.JsonBackReference;
+// import jakarta.persistence.*;
 
-// import jakarta.persistence.CascadeType;
-// import jakarta.persistence.Entity;
-// import jakarta.persistence.GeneratedValue;
-// import jakarta.persistence.GenerationType;
-// import jakarta.persistence.Id;
-// import jakarta.persistence.JoinColumn;
-// import jakarta.persistence.ManyToOne;
-// import jakarta.persistence.OneToMany;
-// import java.util.*;
+
 
 // @Entity
 // public class Order {
 //     @Id
 //     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//     private long orderId;
+//     private Long id;
 
-//     private long qty;
-//     private DeliverOption deliverOption;
-//     public long getQty() {
-//         return qty;
+//     public Long getId() {
+//         return id;
 //     }
 
-//     public void setQty(long qty) {
-//         this.qty = qty;
+//     public void setId(Long id) {
+//         this.id = id;
 //     }
 
-//     public DeliverOption getDeliverOption() {
-//         return deliverOption;
-//     }
+//     private Long qty;
 
-//     public void setDeliverOption(DeliverOption deliverOption) {
-//         this.deliverOption = deliverOption;
-//     }
-
-//     private enum DeliverOption{
-//         PickUp, Rider
-//     }
+//     @Enumerated(EnumType.STRING)
+//     private DeliveryOption deliveryOption;
 
 //     @ManyToOne
 //     @JoinColumn(name = "user_id")
-//     @JsonBackReference
-//     private MyUser myUser;
+//     private MyUser user;
 
-//     public MyUser getMyUser() {
-//         return myUser;
+//     // @ManyToOne
+//     // @JoinColumn(name = "address_id")
+//     // private Address address;
+
+//     // public Address getAddress() {
+//     //     return address;
+//     // }
+
+//     // public void setAddress(Address address) {
+//     //     this.address = address;
+//     // }
+
+//     // @ManyToOne
+//     // @JoinColumn(name = "item_id")
+//     // private Item item;
+
+//     // public Item getItem() {
+//     //     return item;
+//     // }
+
+//     // public void setItem(Item item) {
+//     //     this.item = item;
+//     // }
+
+
+//     public Long getQty() {
+//         return qty;
 //     }
 
-//     public void setMyUser(MyUser myUser) {
-//         this.myUser = myUser;
+//     public void setQty(Long qty) {
+//         this.qty = qty;
 //     }
 
-//     @ManyToOne
-//     @JoinColumn(name = "address_id")
-//     private Address address;
-
-//     public Address getAddress() {
-//         return address;
+//     public DeliveryOption getDeliveryOption() {
+//         return deliveryOption;
 //     }
 
-//     public void setAddress(Address address) {
-//         this.address = address;
+//     public void setDeliveryOption(DeliveryOption deliveryOption) {
+//         this.deliveryOption = deliveryOption;
 //     }
 
-//     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-//     private List<Item> items;
-//     public List<Item> getItems() {
-//         return items;
+//     public MyUser getUser() {
+//         return user;
 //     }
 
-//     public void setItems(List<Item> items) {
-//         this.items = items;
+//     public void setUser(MyUser user) {
+//         this.user = user;
+//     }
+
+//     public enum DeliveryOption {
+//         PickUp, Rider
 //     }
 // }
-

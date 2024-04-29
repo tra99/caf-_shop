@@ -65,13 +65,6 @@ public class Address {
         this.postalCode = postalCode;
     }
 
-    // public MyUser getMyUser() {
-    //     return myUser;
-    // }
-
-    // public void setMyUser(MyUser myUser) {
-    //     this.myUser = myUser;
-    // }
 
     // @OneToOne
     // @JoinColumn(name = "order_id")
@@ -79,3 +72,10 @@ public class Address {
     // private Order order;
 }
 
+    // public MyUser getMyUser() {
+    //     return myUser;
+    // }
+
+    // public void setMyUser(MyUser myUser) {
+    //     this.myUser = myUser;
+    // }
