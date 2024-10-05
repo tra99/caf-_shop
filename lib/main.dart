@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:frontend/authentication/login.dart';
 import 'package:frontend/views/home_page.dart';
 
-void main() {
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+void main() async {
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

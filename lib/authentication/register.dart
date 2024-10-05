@@ -149,8 +149,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: const Color.fromARGB(255, 106, 85, 77), // Background color
-                    onPrimary: Colors.white,
+                    foregroundColor: Colors.white, backgroundColor: const Color.fromARGB(255, 106, 85, 77),
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12), // Button padding
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8), // Button border radius
@@ -181,8 +180,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: const Color.fromARGB(255, 244, 225, 219), // Background color
-                    onPrimary: const Color.fromARGB(255, 106, 85, 77),
+                    foregroundColor: const Color.fromARGB(255, 106, 85, 77), backgroundColor: const Color.fromARGB(255, 244, 225, 219),
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12), // Button padding
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8), // Button border radius

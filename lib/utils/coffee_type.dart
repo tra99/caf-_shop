@@ -10,7 +10,6 @@ class CoffeeType extends StatelessWidget {
     required this.coffeeType,
     required this.isSelected,
     required this.onTab,
-
   });
 
   @override
